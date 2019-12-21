@@ -1,12 +1,12 @@
 import React, {
   useState
 } from 'react';
-import './components/post/post'
+import './components/post/post';
 import Post from './components/post/post';
 import NewPostArea from './components/post/newPostArea';
 import SideBarPanel from './components/sidebar/sideBarPanel.jsx';
 import About from './components/post/about.jsx';
-import Register from './components/auth/register.jsx';
+import Register from './components/auth/register';
 import LogIn from './components/auth/login.jsx';
 import {
   Switch,
@@ -14,10 +14,10 @@ import {
   Route
 } from 'react-router-dom';
 
-function App() {
+function App():JSX.Element {
 
-  const [posts, setPosts] = useState([]);
-  let newPost;
+  const [posts, setPosts] = useState<string[]>([]);
+  let newPost:string ="";
 
   function GetPost(val) {
     newPost = val;
