@@ -1,44 +1,31 @@
 import React, { useState } from 'react';
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 
-function Register():JSX.Element {
+function Login():JSX.Element {
 
     function SubmitForm(event)
     {
-        
-        
-        
-        // axios.get("http://localhost:8000").then(()=>{
-        //     console.log('ok');
-        // })
-        axios.post('/register',user)
-            .then(function (response:AxiosResponse) {
+        axios.post('http://localhost:8000/login',user)
+            .then(function (response) {
                 //handle success
-                console.log("response")
-                console.log(response.data);
                 console.log(response);
             })
             .catch(function (response) {
-                console.log("error")
-                console.log(response.data);
-                console.log(response);
                 //handle error
-                console.log(response.body);
+                console.log(response);
             });
 
         event.preventDefault();
-        //console.log(event);
-        
-
+        console.log(event);
     }
 
     interface _user{
         username:string,
-        password:string
+        pass:string
     }
     
 
-    const [user,setUser] = useState<_user>({username:"",password:""});
+    const [user,setUser] = useState<_user>({username:"",pass:""});
     
     function handleChange(event)
     {
@@ -48,24 +35,24 @@ function Register():JSX.Element {
             if(targetName==="username")
             {
                 return {username:targetValue,
-                    password:prevState.password
+                    pass:prevState.pass
                 };
             }
             else if(targetName==="pass"){
                 return {username:prevState.username,
-                    password:targetValue
+                    pass:targetValue
                 };
             }
             else{
                 throw Error("undefined");
             }
         })
-        //console.log(user);
+        console.log(user);
     }
 
     return (
         <div className="text-center">
-            <div className="logo">Register</div>
+            <div className="logo">Login</div>
             <div className="login-form-1">
                 <form id="login-form" className="text-left">
                     <div className="login-form-main-message"></div>
@@ -77,7 +64,7 @@ function Register():JSX.Element {
                             </div>
                             <div className="form-group">
                                 <label  className="sr-only">Password</label>
-                                <input type="password" className="form-control" id="lg_password" name="pass" placeholder="password" onChange={handleChange} value={user.password}/>
+                                <input type="password" className="form-control" id="lg_password" name="pass" placeholder="password" onChange={handleChange} value={user.pass}/>
                             </div>
                         </div>
                         <button onClick={SubmitForm} type="button"  className="login-button" >< i className="fa fa-chevron-right"></i></button>
@@ -87,4 +74,4 @@ function Register():JSX.Element {
         </div>
     );
 }
-export default Register;
+export default Login;

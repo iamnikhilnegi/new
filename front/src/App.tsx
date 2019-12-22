@@ -7,7 +7,7 @@ import NewPostArea from './components/post/newPostArea';
 import SideBarPanel from './components/sidebar/sideBarPanel.jsx';
 import About from './components/post/about.jsx';
 import Register from './components/auth/register';
-import LogIn from './components/auth/login.jsx';
+import LogIn from './components/auth/login';
 import {
   Switch,
   BrowserRouter as Router,
